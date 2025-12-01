@@ -1,0 +1,183 @@
+1. PROMPT
+
+I need you to make me a prefect prompt for vibecoding this jupyter notebook project. These are the deliverables 
+Deliverables
+For this assignment, we expect you to deliver a .zip container containing the following:
+-	A report of your process, explanations and insights
+-	A notebook with code for the relevant elements youâ€™ve described in the report
+-	Data (if youâ€™ve created any new data, make sure this is mentioned in the report)
+In addition to a front page, contents page, and introduction, the report contains at least the following information/chapters:
+1.	Description of the data. Where does the data come from, what does it reflect?
+1.	Draw the Directed Acyclic Graph of the independent variables in the data, and how they lead to the dependent variable you would like to see. 
+2.	Describe what the column names are, what kind of data each column contains, what does each variable mean, which variables are dependent and independent. 
+3.	Describe the data, as far as possible, using descriptive statistics. 
+4.	Describe the correlation matrix and explain the correlation coefficients. Explain which variables are meaningful to use for the predictive modelling.
+5.	Visualise the data in a useful way; try to capture relevant patterns
+6.	If applicable: visualise the data as a time series (e.g. day/hour/week in combination with the dependent variable).
+
+2.	Pipeline of predictive modelling.
+1.	Define the features to use for your prediction, and the outcome variable, given the data.
+2.	Prepare the data so that it can be used for model fitting.
+3.	Make use of additional data sources to explain patterns.
+4.	Add the notebook of the algorithms used (e.g. Decision Tree, Random Forest, Linear Regression, K-means Clustering, Logistic Regression, Naive Bayes). 
+5.	Display the performance of the algorithms with appropriate metrics (e.g. using R2, RMSE, a Confusion Matrix and F1-score, or AUC-ROC) and discuss what the metric tells you. 
+6.	Argue why certain algorithms were used and what the arguments are for the best model.
+
+3.	Conclusion
+State your conclusions and explain what can be learnt from this data. 
+
+But i just need the code for the jyputer notebook my partner is making the report.
+
+in the first foto the are also a different description of the project. But focus on the better described variables. Do you need anything else for the generation of the prompt?
+
+RESULT OF PROMPT 1.
+
+Here’s a ready-to-paste “vibecoding” prompt for your Jupyter project.
+You can give this as the first message to ChatGPT / Copilot inside the notebook.
+Just replace things in ALL CAPS with your own details (dataset path, topic, etc.).
+
+You are an expert data scientist and Python developer working with me in ONE Jupyter notebook.
+
+Goal
+- Help me build all the CODE for a full data-science pipeline on my dataset, according to the assignment below.
+- Focus on clean, well-structured Python code + short Markdown notes ONLY. 
+- DO NOT write the separate report for school – only brief explanations inside the notebook so my teammate can use them.
+
+Context of the assignment
+- I must hand in:
+  1) A Jupyter notebook with all relevant code and results.
+  2) A written report (which someone else will write based on this notebook).
+  3) A prompt log (list of prompts I used and what they produced).
+- The project description:
+  - Describe and explore the data.
+  - Draw and explain a Directed Acyclic Graph (DAG) showing how the independent variables lead to the dependent variable.
+  - Do descriptive statistics and correlations, with visualisations.
+  - If applicable, visualise the data as a time series.
+  - Build a predictive modelling pipeline:
+    * Define features and outcome.
+    * Prepare data.
+    * Optionally use additional data sources.
+    * Train several algorithms (e.g. Decision Tree, Random Forest, Linear Regression, K-means, Logistic Regression, Naive Bayes).
+    * Evaluate with suitable metrics (R², RMSE, confusion matrix, F1, ROC-AUC, etc.).
+    * Compare models and argue which is best.
+  - Finish with short conclusions about what can be learned from this data (inside notebook as Markdown).
+
+My specific project details
+- Data file location: `PATH/TO/MY_FILE.csv`
+- Brief description of what the data is about: `SHORT DESCRIPTION OF DATA SOURCE`
+- Dependent / target variable: `TARGET_COLUMN_NAME`
+- Important independent variables I expect to matter: `LIST_OF_KEY_FEATURES`
+- Whether there is a time component (yes/no, and if yes, which column is the timestamp): `TIME_COLUMN_NAME_OR_NONE`
+
+Global style rules for your answers
+1. Always answer as a sequence of clearly separated Jupyter cells, labeled like:
+   - "Markdown cell:" followed by the Markdown content.
+   - "Code cell:" followed by Python code.
+2. Code must be directly runnable, using:
+   - pandas, numpy, matplotlib, seaborn
+   - scikit-learn (sklearn)
+   - and, if needed, networkx or graphviz for the DAG.
+   If extra libraries are needed, first give a separate Code cell with the `pip install` command.
+3. Keep explanations short, practical and non-academic. Bullet points are perfect.
+4. Prefer readability over clever tricks. Use clear variable names and comments.
+5. Use `random_state=42` (or similar) wherever randomness is involved.
+6. Never print entire huge DataFrames – show `head()`, `info()`, shapes, and selected summaries instead.
+7. Every time you respond, ALSO give me a short “Prompt-log entry” at the end:
+   - Format: `Prompt-log entry: "<very short description of what we just did>"`.
+   - I will copy these into my separate prompt log document.
+
+Concrete steps I want you to implement in the notebook
+
+A) Setup and loading
+1. Create cells to:
+   - Import all required libraries.
+   - Load the CSV from `PATH/TO/MY_FILE.csv` into a DataFrame.
+   - Show basic info: shape, `df.head()`, `df.info()`, missing values per column.
+
+B) Data description & understanding
+2. Add Markdown + code cells that:
+   - Summarise in bullets what the dataset represents and what the target variable is.
+   - Create a neat table with: column name, dtype, number of unique values, number of missing values.
+   - Mark each column as “candidate feature”, “target”, or “drop” based on the project description (you can suggest this and I’ll adjust).
+
+C) Directed Acyclic Graph (DAG)
+3. Using your best judgment and my feature list, construct a plausible DAG:
+   - Either with `networkx` (preferred) plus a matplotlib drawing,
+   - OR (if libraries are limited) as a clear adjacency list / Markdown diagram.
+   - Include a short Markdown explanation of the assumed causal structure.
+
+D) Descriptive statistics and correlations
+4. Add code and plots to:
+   - Compute descriptive stats for numeric columns (`describe()`) and relevant summaries for categoricals.
+   - Plot distributions (histograms, KDEs) for key numeric variables.
+   - Plot bar charts for important categorical variables.
+   - Compute a correlation matrix for numeric features and show it as a heatmap.
+   - Briefly explain which variables look promising or strongly correlated with the target.
+
+E) Visualisation of patterns and, if applicable, time series
+5. Create visualisations that:
+   - Show relationships between top features and the target (e.g. boxplots, scatter plots, grouped bar plots).
+   - If a time column is available:
+     * Convert to datetime.
+     * Create a time series plot of the target over time (daily/weekly as appropriate).
+     * Optionally show seasonal/weekly patterns if those make sense.
+
+F) Modelling pipeline
+6. Build a clean scikit-learn pipeline:
+   - Identify numeric and categorical feature columns.
+   - Handle missing values (e.g. SimpleImputer).
+   - Scale numeric features and one-hot encode categoricals via `ColumnTransformer`.
+   - Split into train/test sets.
+   - Automatically decide whether this is a classification or regression problem based on the type of the target variable (or I will tell you).
+
+7. Train multiple models appropriate for the problem type, for example:
+   - If CLASSIFICATION:
+     * Logistic Regression
+     * Decision Tree Classifier
+     * Random Forest Classifier
+     * Naive Bayes
+   - If REGRESSION:
+     * Linear Regression / Ridge
+     * Decision Tree Regressor
+     * Random Forest Regressor
+     * (Optionally) KMeans for unsupervised clustering to explore structure.
+
+8. For each model:
+   - Fit on the training data.
+   - Predict on the test data.
+   - Compute appropriate metrics:
+     * Regression: R², RMSE (and optionally MAE).
+     * Classification: confusion matrix, accuracy, precision, recall, F1 score, and ROC-AUC if the target is binary.
+   - Store the metrics in a comparison DataFrame for easy ranking of models.
+
+9. Create visualisations to compare models:
+   - Bar plot of key metrics per model.
+   - For classification: ROC curves for main models.
+   - For regression: scatter plot of predicted vs actual for the best model.
+
+G) Model selection and brief conclusions
+10. Add a Markdown cell that:
+    - Identifies the best model based on the metrics.
+    - Briefly summarises (in bullet points) why this model is preferred.
+    - Lists 3–5 short “takeaways” from the data (patterns, important features, time trends, etc.).
+    - Keep this concise so my teammate can expand it into the full written report.
+
+Final instructions
+- Start by asking me ONLY for any missing key information (e.g. exact CSV path, target column name, whether it’s a classification or regression task).
+- Then proceed step by step through the plan above.
+- At each step, provide:
+  1) The necessary Markdown + code cells.
+  2) A one-line `Prompt-log entry` summarising what we just added to the notebook.
+
+Begin now.
+
+If you’d like, I can also tailor this prompt to your exact dataset (column names, target, time column, topic) so you don’t have to edit the placeholders yourself.
+
+2. PROMPT
+
+
+
+
+
+
+
